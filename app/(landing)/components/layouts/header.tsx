@@ -6,12 +6,8 @@ const Header = () => {
     return (
         <header>
             <div className="flex justify-between gap-10 container mx-auto py-7">
-                <Image
-                    src="/images/logo.svg"
-                    alt="sporton logo"
-                    width={127}
-                    height={30}
-                    />
+                <Image src="/images/logo.svg" alt="sporton logo"
+                    width={127} height={30} />
                 <nav className="flex gap-24 font-medium">
                     <Link href="#"
                         className="relative after:content-[''] after:block after:bg-primary after:rounded-full after:h-[3px]
