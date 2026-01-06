@@ -12,8 +12,8 @@ const categoryList = [
         imgUrl: "category-tennis.png"
     },
     {
-        name: "basketball",
-        imgUrl: "category-Basketball.png"
+        name: "Basketball",
+        imgUrl: "category-basketball.png"
     },
     {
         name: "Football",
