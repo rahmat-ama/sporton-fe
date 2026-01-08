@@ -35,7 +35,14 @@ const Header = () => {
             className="relative cursor-pointer"
             onClick={() => setIsCartPopupOpen(!isCartPopupOpen)}
           >
-            <FiShoppingBag size={24} />
+            <div
+              className={`relative inline-flex items-center justify-center cursor-pointer ${
+                isCartPopupOpen &&
+                "before:h-10 before:w-10 before:bg-primary/9 before:rounded-full before:content-[''] before:absolute before:-z-1"
+              }`}
+            >
+              <FiShoppingBag size={24} />
+            </div>
             <div className="bg-primary rounded-full w-3.5 h-3.5 absolute -top-1 -right-1 text-[10px] text-white text-center">
               3
             </div>

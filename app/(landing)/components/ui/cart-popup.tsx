@@ -3,7 +3,7 @@ import { FiArrowRight, FiTrash2 } from "react-icons/fi";
 import Button from "./button";
 import priceFormatter from "@/app/utils/price-formatter";
 
-const cartList = [
+export const cartList = [
   {
     name: "SportsOn Hyperfast Shoes",
     category: "Running",
@@ -42,7 +42,7 @@ const CartPopup = () => {
 
   return (
     <div className="absolute bg-white right-0 top-12 shadow-xl shadow-black/10 border border-gray-200 w-90">
-      <div className="p-5 border-b-gray-200 text-center font-bold">
+      <div className="p-5 border-b border-gray-200 text-center font-bold">
         Shopping Cart
       </div>
       {cartList.map((item, index) => (
@@ -50,7 +50,7 @@ const CartPopup = () => {
           className="border-b border-gray-200 p-4 flex gap-3"
           key={`${index}`}
         >
-          <div className="bg-primary-light aspect-square w-16 flex justify-center items-center">
+          <div className="bg-gray-100 aspect-square w-16 flex justify-center items-center">
             <Image
               src={`/images/products/${item.imgUrl}`}
               alt={`${item.name}`}

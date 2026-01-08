@@ -5,7 +5,9 @@ const priceFormatter = (price: number) => {
     maximumSignificantDigits: 3,
   }).format(price);
 
-  return newFormat;
+  const formatWithDot = newFormat.replace(/^Rp(\s?)/, "Rp. $1");
+
+  return formatWithDot;
 };
 
 export default priceFormatter;
