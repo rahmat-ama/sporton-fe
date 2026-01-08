@@ -45,35 +45,37 @@ const CartPopup = () => {
       <div className="p-5 border-b border-gray-200 text-center font-bold">
         Shopping Cart
       </div>
-      {cartList.map((item, index) => (
-        <div
-          className="border-b border-gray-200 p-4 flex gap-3"
-          key={`${index}`}
-        >
-          <div className="bg-gray-100 aspect-square w-16 flex justify-center items-center">
-            <Image
-              src={`/images/products/${item.imgUrl}`}
-              alt={`${item.name}`}
-              width={63}
-              height={63}
-            />
-          </div>
-          <div className="self-center">
-            <div className="text-sm font-medium">{item.name}</div>
-            <div className="flex gap-3 items-center">
-              <div className="font-medium text-xs">{item.qty}x</div>
-              <div className="text-primary">{priceFormatter(item.price)}</div>
-            </div>
-          </div>
-          <Button
-            size="small"
-            variant="ghost"
-            className="w-7 h-7 p-0! self-center ml-auto"
+      <div className="overflow-auto h-76">
+        {cartList.map((item, index) => (
+          <div
+            className="border-b border-gray-200 p-4 flex gap-3"
+            key={`${index}`}
           >
-            <FiTrash2 />
-          </Button>
-        </div>
-      ))}
+            <div className="bg-gray-100 aspect-square w-16 flex justify-center items-center">
+              <Image
+                src={`/images/products/${item.imgUrl}`}
+                alt={`${item.name}`}
+                width={63}
+                height={63}
+              />
+            </div>
+            <div className="self-center">
+              <div className="text-sm font-medium">{item.name}</div>
+              <div className="flex gap-3 items-center">
+                <div className="font-medium text-xs">{item.qty}x</div>
+                <div className="text-primary">{priceFormatter(item.price)}</div>
+              </div>
+            </div>
+            <Button
+              size="small"
+              variant="ghost"
+              className="w-7 h-7 p-0! self-center ml-auto"
+            >
+              <FiTrash2 />
+            </Button>
+          </div>
+        ))}
+      </div>
       <div className="border-t border-gray-200 p-4">
         <div className="flex justify-between font-bold">
           <div className="text-sm">Total</div>
