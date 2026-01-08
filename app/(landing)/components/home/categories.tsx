@@ -45,9 +45,9 @@ const CategoriesSection = () => {
                 { categoryList.map((category, index) => (
                     <div className="rounded-lg bg-linear-to-r from-[#f1f1f1] to-[#f7f7f7] w-full aspect-square flex justify-center" 
                     key={index}>
-                        <div className="self-center">
+                        <div className="self-center flex flex-col items-center">
                             <Image src={`/images/categories/${category.imgUrl}`} alt={`${category.name}`} 
-                            className="mb-2.5" width={86} height={86} />
+                            className="mb-2.5 " width={86} height={86} />
                             <div className="text-primary font-medium text-xl text-center">
                                 {category.name}
                             </div>
