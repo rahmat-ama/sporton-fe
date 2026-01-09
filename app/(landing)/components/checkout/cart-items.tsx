@@ -51,7 +51,7 @@ const CartItems = () => {
           </div>
         </div>
         <Button variant="dark" className="w-full mt-4">
-          <FiCreditCard /> Payment Now
+          <FiCreditCard /> Proceed to Payment
         </Button>
       </div>
     </CardWithHeader>
