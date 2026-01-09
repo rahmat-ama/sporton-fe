@@ -11,7 +11,7 @@ const OrderConfirmed = () => {
         width={117}
         height={117}
       />
-      <h2 className="text-2xl font-semibold mb-2 mt-3">Order Confirmed!</h2>
+      <h2 className="text-2xl font-semibold mb-2 mt-3">Order Confirmed !!</h2>
       <p className="text-center mb-8">
         We have received your payment, and your order is currently processed by
         our staff, just wait until your favorite sportswear arrive in your home.

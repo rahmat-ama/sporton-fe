@@ -1,11 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import { cartList } from "../ui/cart-popup";
 import Button from "../ui/button";
 import priceFormatter from "@/app/utils/price-formatter";
 import { FiCreditCard, FiTrash2 } from "react-icons/fi";
 import CardWithHeader from "../ui/card-with-header";
+import { useRouter } from "next/navigation";
 
 const CartItems = () => {
+  const router = useRouter();
+
   const totalPrice = cartList.reduce(
     (total, item) => total + item.price * item.qty,
     0
@@ -50,7 +55,11 @@ const CartItems = () => {
             {priceFormatter(totalPrice)}
           </div>
         </div>
-        <Button variant="dark" className="w-full mt-4">
+        <Button
+          variant="dark"
+          className="w-full mt-4"
+          onClick={() => router.push("/payment")}
+        >
           <FiCreditCard /> Proceed to Payment
         </Button>
       </div>
