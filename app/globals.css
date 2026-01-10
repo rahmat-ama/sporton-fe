@@ -30,3 +30,17 @@
 html {
   overflow-x: hidden;
 }
+
+/* INPUT GROUP */
+.input-group {
+  @apply mb-5;
+}
+
+.input-group label {
+  @apply block text-xs mb-2;
+}
+
+.input-group input,
+textarea {
+  @apply px-4 py-2.5 bg-gray-100 w-full border border-gray-100 focus:border focus:border-gray-400 text-sm;
+}
