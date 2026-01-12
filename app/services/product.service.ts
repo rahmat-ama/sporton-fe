@@ -6,3 +6,9 @@ export const getAllProducts = async (): Promise<Product[]> => {
 
   return res;
 };
+
+export const getProductDetail = async (id: string): Promise<Product> => {
+  const res = await fetchApi<Product>(`/products/${id}`);
+
+  return res;
+};

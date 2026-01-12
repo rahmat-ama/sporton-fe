@@ -1,0 +1,50 @@
+import { create } from "zustand";
+import { Product } from "../types";
+import { persist } from "zustand/middleware";
+
+export interface CartItem extends Product {
+  qty: number;
+}
+
+interface CartStore {
+  items: CartItem[];
+  addItem: (product: Product, qty?: number) => void;
+  removeItem: (productId: string) => void;
+  reset: () => void;
+}
+
+export const useCartStore = create<CartStore>()(
+  persist(
+    // agar misalnya refresh, STATE DATA tidak hilang / kembali ke default, karena di simpan ke
+    // storage yang lebih permanen di browser (local / session)
+    (set, get) => ({
+      items: [],
+      addItem: (product, qty = 1) => {
+        const items = get().items;
+        const existingItem = items.find((item) => item._id == product._id);
+
+        if (existingItem) {
+          if (existingItem.qty + qty > existingItem.stock) {
+            throw new Error("Penambahan item melebihi stock yang ada");
+          }
+          set({
+            items: items.map((item) =>
+              item._id === product._id ? { ...item, qty: item.qty + qty } : item
+            ),
+          });
+        } else {
+          set({ items: [...items, { ...product, qty }] });
+        }
+      },
+      removeItem: (productId) => {
+        set({ items: get().items.filter((item) => item._id !== productId) });
+      },
+      reset: () => {
+        set({ items: [] });
+      },
+    }),
+    {
+      name: "cart-store",
+    }
+  )
+);

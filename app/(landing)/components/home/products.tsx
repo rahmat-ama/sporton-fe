@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../ui/button";
@@ -5,21 +7,47 @@ import { FiPlus } from "react-icons/fi";
 import priceFormatter from "@/app/utils/price-formatter";
 import { Product } from "@/app/types";
 import { getImageUrl } from "@/app/lib/api";
+import { useCartStore } from "@/app/hooks/use-cart-store";
+import React from "react";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 type TProductsProps = {
   products: Product[];
 };
 
 const ProductsSection = ({ products }: TProductsProps) => {
+  const { addItem } = useCartStore();
+
+  const handleAddToCart = (event: React.MouseEvent, product: Product) => {
+    event.stopPropagation();
+    event.preventDefault();
+    try {
+      addItem(product);
+    } catch (err) {
+      toast.error(`${err}`, {
+        position: "top-center",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+    }
+  };
+
   return (
     <section id="products-section" className="container mx-auto mt-32 mb-52">
+      <ToastContainer />
       <h2 className="font-bold italic text-4xl text-center mb-11">
         <span className="text-primary">OUR</span> PRODUCTS
       </h2>
       <div className="grid grid-cols-4 gap-5">
         {products.map((product) => (
           <Link
-            href={`/product/${product.name}`}
+            href={`/product/${product._id}`}
             key={product._id}
             className="p-1.5 bg-white hover:drop-shadow-xl duration-300"
           >
@@ -31,7 +59,10 @@ const ProductsSection = ({ products }: TProductsProps) => {
                 height={300}
                 className="aspect-square object-contain"
               />
-              <Button className="w-10 h-10 p-2! absolute right-3 top-3">
+              <Button
+                className="w-10 h-10 p-2! absolute right-3 top-3"
+                onClick={(event) => handleAddToCart(event, product)}
+              >
                 <FiPlus size={24} />
               </Button>
             </div>

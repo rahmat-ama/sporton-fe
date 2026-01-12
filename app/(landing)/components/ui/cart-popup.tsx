@@ -3,42 +3,14 @@ import { FiArrowRight, FiTrash2 } from "react-icons/fi";
 import Button from "./button";
 import priceFormatter from "@/app/utils/price-formatter";
 import { useRouter } from "next/navigation";
-
-export const cartList = [
-  {
-    name: "SportsOn Hyperfast Shoes",
-    category: "Running",
-    price: 280000,
-    qty: 2,
-    imgUrl: "product-3.png",
-  },
-  {
-    name: "SportsOn Rockets Tennis",
-    category: "Tennis",
-    price: 650000,
-    qty: 1,
-    imgUrl: "product-2.png",
-  },
-  {
-    name: "SportsOn Slowlivin",
-    category: "Running",
-    price: 150000,
-    qty: 3,
-    imgUrl: "product-1.png",
-  },
-  {
-    name: "SportsOn HypserSoccer v2",
-    category: "Football",
-    price: 450000,
-    qty: 2,
-    imgUrl: "product-4.png",
-  },
-];
+import { useCartStore } from "@/app/hooks/use-cart-store";
+import { getImageUrl } from "@/app/lib/api";
 
 const CartPopup = () => {
   const router = useRouter();
+  const { items, removeItem } = useCartStore();
 
-  const totalPrice = cartList.reduce(
+  const totalPrice = items.reduce(
     (total, item) => total + item.price * item.qty,
     0
   );
@@ -52,36 +24,45 @@ const CartPopup = () => {
       <div className="p-5 border-b border-gray-200 text-center font-bold">
         Shopping Cart
       </div>
-      <div className="overflow-auto h-76">
-        {cartList.map((item, index) => (
-          <div
-            className="border-b border-gray-200 p-4 flex gap-3"
-            key={`${index}`}
-          >
-            <div className="bg-gray-100 aspect-square w-16 flex justify-center items-center">
-              <Image
-                src={`/images/products/${item.imgUrl}`}
-                alt={`${item.name}`}
-                width={63}
-                height={63}
-              />
-            </div>
-            <div className="self-center">
-              <div className="text-sm font-medium">{item.name}</div>
-              <div className="flex gap-3 items-center">
-                <div className="font-medium text-xs">{item.qty}x</div>
-                <div className="text-primary">{priceFormatter(item.price)}</div>
-              </div>
-            </div>
-            <Button
-              size="small"
-              variant="ghost"
-              className="w-7 h-7 p-0! self-center ml-auto"
+      <div className="overflow-auto max-h-76">
+        {items.length ? (
+          items.map((item) => (
+            <div
+              className="border-b border-gray-200 p-4 flex gap-3"
+              key={`${item._id}`}
             >
-              <FiTrash2 />
-            </Button>
+              <div className="bg-gray-100 aspect-square w-16 flex justify-center items-center">
+                <Image
+                  src={getImageUrl(item.imageUrl)}
+                  alt={`${item.name}`}
+                  width={63}
+                  height={63}
+                />
+              </div>
+              <div className="self-center">
+                <div className="text-sm font-medium">{item.name}</div>
+                <div className="flex gap-3 items-center">
+                  <div className="font-medium text-xs">{item.qty}x</div>
+                  <div className="text-primary">
+                    {priceFormatter(item.price)}
+                  </div>
+                </div>
+              </div>
+              <Button
+                size="small"
+                variant="ghost"
+                className="w-7 h-7 p-0! self-center ml-auto"
+                onClick={() => removeItem(item._id)}
+              >
+                <FiTrash2 />
+              </Button>
+            </div>
+          ))
+        ) : (
+          <div className="text-center py-5 opacity-50">
+            Your shopping cart is empty
           </div>
-        ))}
+        )}
       </div>
       <div className="border-t border-gray-200 p-4">
         <div className="flex justify-between font-bold">
