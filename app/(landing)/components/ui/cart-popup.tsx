@@ -3,17 +3,21 @@ import { FiArrowRight, FiTrash2 } from "react-icons/fi";
 import Button from "./button";
 import priceFormatter from "@/app/utils/price-formatter";
 import { useRouter } from "next/navigation";
-import { useCartStore } from "@/app/hooks/use-cart-store";
+import { CartItem, useCartStore } from "@/app/hooks/use-cart-store";
 import { getImageUrl } from "@/app/lib/api";
+import totalPriceCounter from "@/app/utils/total-price";
+import { toastError } from "@/app/utils/toast-notification";
 
 const CartPopup = () => {
   const router = useRouter();
   const { items, removeItem } = useCartStore();
 
-  const totalPrice = items.reduce(
-    (total, item) => total + item.price * item.qty,
-    0
-  );
+  const totalPrice = totalPriceCounter(items);
+
+  const handleRemoveItem = (item: CartItem) => {
+    removeItem(item._id);
+    toastError("Item removed");
+  };
 
   const handleCheckout = () => {
     router.push("/checkout");
@@ -52,7 +56,7 @@ const CartPopup = () => {
                 size="small"
                 variant="ghost"
                 className="w-7 h-7 p-0! self-center ml-auto"
-                onClick={() => removeItem(item._id)}
+                onClick={() => handleRemoveItem(item)}
               >
                 <FiTrash2 />
               </Button>

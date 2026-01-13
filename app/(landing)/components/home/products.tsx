@@ -9,7 +9,8 @@ import { Product } from "@/app/types";
 import { getImageUrl } from "@/app/lib/api";
 import { useCartStore } from "@/app/hooks/use-cart-store";
 import React from "react";
-import { Bounce, toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import { toastError, toastSuccess } from "@/app/utils/toast-notification";
 
 type TProductsProps = {
   products: Product[];
@@ -23,18 +24,9 @@ const ProductsSection = ({ products }: TProductsProps) => {
     event.preventDefault();
     try {
       addItem(product);
+      toastSuccess("Item added successfully");
     } catch (err) {
-      toast.error(`${err}`, {
-        position: "top-center",
-        autoClose: 1500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: Bounce,
-      });
+      toastError(`${err}`);
     }
   };
 

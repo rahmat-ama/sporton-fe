@@ -11,7 +11,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/app/hooks/use-cart-store";
 import { Product } from "@/app/types";
-import { Bounce, toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import { toastError, toastSuccess } from "@/app/utils/toast-notification";
 
 type TProductActionsProps = {
   product: Product;
@@ -26,18 +27,9 @@ const ProductActions = ({ product, stock }: TProductActionsProps) => {
   const handleAddToCart = () => {
     try {
       addItem(product, qty);
+      toastSuccess("Item added successfully");
     } catch (err) {
-      toast.error(`${err}`, {
-        position: "top-center",
-        autoClose: 1500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: Bounce,
-      });
+      toastError(`${err}`);
     }
   };
 
