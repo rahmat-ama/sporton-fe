@@ -25,8 +25,12 @@ const PaymentSteps = () => {
       return;
     }
     if (!customerInfo) {
-      toastError("Customer information is missing, please return to checkout");
-      push("/checkout");
+      toastError(
+        "Customer information is missing, redirecting to checkout page"
+      );
+      setTimeout(() => {
+        push("/checkout");
+      }, 2000);
       return;
     }
     try {
@@ -48,9 +52,11 @@ const PaymentSteps = () => {
 
       const res = await transactionCheckout(formData);
 
-      toastSuccess("Transaction created succesfully");
       reset();
-      push(`/order-status/${res._id}`);
+      toastSuccess("Transaction created succesfully");
+      setTimeout(() => {
+        push(`/order-status/${res._id}`);
+      }, 2000);
     } catch (error) {
       toastError(`Something wrong when try to save customer info. ${error}`);
     }

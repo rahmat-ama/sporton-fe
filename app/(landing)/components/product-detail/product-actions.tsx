@@ -34,7 +34,15 @@ const ProductActions = ({ product, stock }: TProductActionsProps) => {
   };
 
   const handleCheckout = () => {
-    push("/checkout");
+    try {
+      addItem(product, qty);
+      toastSuccess("Item added successfully, redirecting to checkout page");
+      setTimeout(() => {
+        push("/checkout");
+      }, 2000);
+    } catch (err) {
+      toastError(`${err}`);
+    }
   };
 
   return (
