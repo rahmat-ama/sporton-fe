@@ -3,10 +3,10 @@
 import { useState } from "react";
 import CartItems from "../components/checkout/cart-items";
 import OrderInformation from "../components/checkout/order-information";
-import { CustomerInfo, useCartStore } from "@/app/hooks/use-cart-store";
 import { useRouter } from "next/navigation";
 import { ToastContainer } from "react-toastify";
-import { toastError } from "@/app/utils/toast-notification";
+import { CustomerInfo, useCartStore } from "../../hooks/use-cart-store";
+import { toastError } from "../../utils/toast-notification";
 
 const Checkout = () => {
   const router = useRouter();

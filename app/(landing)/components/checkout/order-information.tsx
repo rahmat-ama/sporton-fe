@@ -2,7 +2,7 @@
 
 import React, { Dispatch, SetStateAction } from "react";
 import CardWithHeader from "../ui/card-with-header";
-import { CustomerInfo } from "@/app/hooks/use-cart-store";
+import { CustomerInfo } from "../../../hooks/use-cart-store";
 
 type TOrderInformation = {
   formData: CustomerInfo;

@@ -1,8 +1,8 @@
-import { getImageUrl } from "@/app/lib/api";
-import { Category } from "@/app/types";
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
+import { getImageUrl } from "../../../lib/api";
+import { Category } from "../../../types";
 
 type TCategoriesProps = {
   categories: Category[];
