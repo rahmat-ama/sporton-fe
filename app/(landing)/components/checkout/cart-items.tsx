@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import Button from "../ui/button";
-import priceFormatter from "@/app/utils/price-formatter";
 import { FiCreditCard, FiTrash2 } from "react-icons/fi";
 import CardWithHeader from "../ui/card-with-header";
-import { CartItem, useCartStore } from "@/app/hooks/use-cart-store";
-import { getImageUrl } from "@/app/lib/api";
-import totalPriceCounter from "@/app/utils/total-price";
-import { toastError } from "@/app/utils/toast-notification";
+import { CartItem, useCartStore } from "../../../hooks/use-cart-store";
+import totalPriceCounter from "../../../utils/total-price";
+import { toastError } from "../../../utils/toast-notification";
+import { getImageUrl } from "../../../lib/api";
+import priceFormatter from "../../../utils/price-formatter";
 
 type TCartItemsProps = {
   handlePayment: () => void;

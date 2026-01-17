@@ -4,13 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "../ui/button";
 import { FiPlus } from "react-icons/fi";
-import priceFormatter from "@/app/utils/price-formatter";
-import { Product } from "@/app/types";
-import { getImageUrl } from "@/app/lib/api";
-import { useCartStore } from "@/app/hooks/use-cart-store";
+import priceFormatter from "../../../utils/price-formatter";
+import { Product } from "../../../types";
 import React from "react";
 import { ToastContainer } from "react-toastify";
-import { toastError, toastSuccess } from "@/app/utils/toast-notification";
+import { useCartStore } from "../../../hooks/use-cart-store";
+import { toastError, toastSuccess } from "../../../utils/toast-notification";
+import { getImageUrl } from "../../../lib/api";
 
 type TProductsProps = {
   products: Product[];

@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { FiArrowRight, FiTrash2 } from "react-icons/fi";
 import Button from "./button";
-import priceFormatter from "@/app/utils/price-formatter";
 import { useRouter } from "next/navigation";
-import { CartItem, useCartStore } from "@/app/hooks/use-cart-store";
-import { getImageUrl } from "@/app/lib/api";
-import totalPriceCounter from "@/app/utils/total-price";
-import { toastError } from "@/app/utils/toast-notification";
+import { CartItem, useCartStore } from "../../../hooks/use-cart-store";
+import totalPriceCounter from "../../../utils/total-price";
+import { toastError } from "../../../utils/toast-notification";
+import { getImageUrl } from "../../../lib/api";
+import priceFormatter from "../../../utils/price-formatter";
 
 const CartPopup = () => {
   const router = useRouter();

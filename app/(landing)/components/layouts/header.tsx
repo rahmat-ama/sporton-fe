@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FiSearch, FiShoppingBag } from "react-icons/fi";
 import CartPopup from "../ui/cart-popup";
 import { useState } from "react";
-import { useCartStore } from "@/app/hooks/use-cart-store";
+import { useCartStore } from "../../../hooks/use-cart-store";
 
 const Header = () => {
   const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);

@@ -4,14 +4,15 @@ import { FiCheckCircle } from "react-icons/fi";
 import CardWithHeader from "../ui/card-with-header";
 import FileUpload from "../ui/file-upload";
 import Button from "../ui/button";
-import priceFormatter from "@/app/utils/price-formatter";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useCartStore } from "@/app/hooks/use-cart-store";
-import { toastError, toastSuccess } from "@/app/utils/toast-notification";
+
 import { ToastContainer } from "react-toastify";
-import totalPriceCounter from "@/app/utils/total-price";
-import { transactionCheckout } from "@/app/services/transaction.service";
+import { useCartStore } from "../../../hooks/use-cart-store";
+import totalPriceCounter from "../../../utils/total-price";
+import { toastError, toastSuccess } from "../../../utils/toast-notification";
+import { transactionCheckout } from "../../../services/transaction.service";
+import priceFormatter from "../../../utils/price-formatter";
 
 const PaymentSteps = () => {
   const { push } = useRouter();
@@ -25,8 +26,12 @@ const PaymentSteps = () => {
       return;
     }
     if (!customerInfo) {
-      toastError("Customer information is missing, please return to checkout");
-      push("/checkout");
+      toastError(
+        "Customer information is missing, redirecting to checkout page"
+      );
+      setTimeout(() => {
+        push("/checkout");
+      }, 2000);
       return;
     }
     try {
@@ -48,9 +53,11 @@ const PaymentSteps = () => {
 
       const res = await transactionCheckout(formData);
 
-      toastSuccess("Transaction created succesfully");
       reset();
-      push(`/order-status/${res._id}`);
+      toastSuccess("Transaction created succesfully");
+      setTimeout(() => {
+        push(`/order-status/${res._id}`);
+      }, 2000);
     } catch (error) {
       toastError(`Something wrong when try to save customer info. ${error}`);
     }

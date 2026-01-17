@@ -9,10 +9,10 @@ import {
 import Button from "../ui/button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useCartStore } from "@/app/hooks/use-cart-store";
-import { Product } from "@/app/types";
 import { ToastContainer } from "react-toastify";
-import { toastError, toastSuccess } from "@/app/utils/toast-notification";
+import { Product } from "../../../types";
+import { useCartStore } from "../../../hooks/use-cart-store";
+import { toastError, toastSuccess } from "../../../utils/toast-notification";
 
 type TProductActionsProps = {
   product: Product;
@@ -34,7 +34,15 @@ const ProductActions = ({ product, stock }: TProductActionsProps) => {
   };
 
   const handleCheckout = () => {
-    push("/checkout");
+    try {
+      addItem(product, qty);
+      toastSuccess("Item added successfully, redirecting to checkout page");
+      setTimeout(() => {
+        push("/checkout");
+      }, 2000);
+    } catch (err) {
+      toastError(`${err}`);
+    }
   };
 
   return (

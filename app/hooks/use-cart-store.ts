@@ -37,7 +37,7 @@ export const useCartStore = create<CartStore>()(
 
         if (existingItem) {
           if (existingItem.qty + qty > existingItem.stock) {
-            throw new Error("Penambahan item melebihi stock yang ada");
+            throw new Error("Adding items exceed the existing stock");
           }
           set({
             items: items.map((item) =>

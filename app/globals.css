@@ -44,3 +44,13 @@ html {
 textarea {
   @apply px-4 py-2.5 bg-gray-100 w-full border border-gray-100 focus:border focus:border-gray-400 text-sm;
 }
+
+.input-group-admin label {
+  @apply block text-xs mb-2 font-semibold;
+}
+
+.input-group-admin input,
+.input-group-admin select,
+.input-group-admin textarea {
+  @apply px-4 py-3 w-full border border-[#DBDBDB] rounded-md focus:border-gray-500 outline-none text-sm;
+}
