@@ -9,7 +9,6 @@ const ProdutManagement = () => {
 
   const handleCloseModal = () => {
     setIsOpen(false);
-    console.log("it's close");
   };
 
   const handleViewDetails = () => {

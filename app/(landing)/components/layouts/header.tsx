@@ -11,10 +11,14 @@ const Header = () => {
   const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
   const { items } = useCartStore();
 
+  const handleOnClose = () => {
+    setIsCartPopupOpen(false);
+  };
+
   return (
-    <header className="sticky -top-4 backdrop-blur-2xl bg-white/50 w-full z-10">
+    <header className="sticky top-0 backdrop-blur-2xl bg-white/50 w-full z-10">
       <div className="flex justify-between gap-10 container mx-auto py-7">
-        <Link href={"/"}>
+        <Link href={"/"} onClick={handleOnClose}>
           <Image
             src="/images/logo.svg"
             alt="sporton logo"
@@ -22,7 +26,7 @@ const Header = () => {
             height={30}
           />
         </Link>
-        <nav className="flex gap-24 font-medium">
+        <nav className="flex gap-24 font-medium" onClick={handleOnClose}>
           <Link
             href="/"
             className="relative after:content-[''] after:block after:bg-primary after:rounded-full after:h-[3px]
@@ -34,7 +38,7 @@ const Header = () => {
           <Link href="#">Explore Products</Link>
         </nav>
         <div className="flex gap-10 relative">
-          <FiSearch size={24} />
+          <FiSearch size={24} onClick={handleOnClose} />
           <button
             className="relative cursor-pointer"
             onClick={() => setIsCartPopupOpen(!isCartPopupOpen)}
@@ -58,6 +62,12 @@ const Header = () => {
           {isCartPopupOpen && <CartPopup />}
         </div>
       </div>
+      {isCartPopupOpen && (
+        <div
+          className="absolute h-screen w-full bg-black/1 backdrop-blur-sm transition-opacity -z-1"
+          onClick={handleOnClose}
+        ></div>
+      )}
     </header>
   );
 };

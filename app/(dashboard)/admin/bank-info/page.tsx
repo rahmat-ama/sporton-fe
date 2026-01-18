@@ -11,7 +11,6 @@ const BankInfoManagement = () => {
 
   const handleCloseModal = () => {
     setIsOpen(false);
-    console.log("it's close");
   };
 
   return (
