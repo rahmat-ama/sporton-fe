@@ -4,7 +4,6 @@ import { useState } from "react";
 import CartItems from "../components/checkout/cart-items";
 import OrderInformation from "../components/checkout/order-information";
 import { useRouter } from "next/navigation";
-import { ToastContainer } from "react-toastify";
 import { CustomerInfo, useCartStore } from "../../hooks/use-cart-store";
 import { toastError } from "../../utils/toast-notification";
 
@@ -32,7 +31,6 @@ const Checkout = () => {
   };
   return (
     <main className="bg-gray-100 pb-20">
-      <ToastContainer />
       <div className="max-w-5xl mx-auto  py-10">
         <h1 className="text-5xl font-bold text-center mb-10">Checkout Now</h1>
         <div className="grid grid-cols-2 gap-14">

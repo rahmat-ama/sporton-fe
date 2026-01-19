@@ -9,7 +9,6 @@ import {
 import Button from "../ui/button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ToastContainer } from "react-toastify";
 import { Product } from "../../../types";
 import { useCartStore } from "../../../hooks/use-cart-store";
 import { toastError, toastSuccess } from "../../../utils/toast-notification";
@@ -47,7 +46,6 @@ const ProductActions = ({ product, stock }: TProductActionsProps) => {
 
   return (
     <div className="flex gap-5">
-      <ToastContainer />
       <div className="border border-gray-500 inline-flex w-fit min-w-20.5">
         <div className="aspect-square text-xl font-medium border-r border-gray-500 flex justify-center items-center">
           <span>{qty}</span>

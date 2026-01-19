@@ -7,7 +7,6 @@ import Button from "../ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { ToastContainer } from "react-toastify";
 import { useCartStore } from "../../../hooks/use-cart-store";
 import totalPriceCounter from "../../../utils/total-price";
 import { toastError, toastSuccess } from "../../../utils/toast-notification";
@@ -27,7 +26,7 @@ const PaymentSteps = () => {
     }
     if (!customerInfo) {
       toastError(
-        "Customer information is missing, redirecting to checkout page"
+        "Customer information is missing, redirecting to checkout page",
       );
       setTimeout(() => {
         push("/checkout");
@@ -39,15 +38,15 @@ const PaymentSteps = () => {
       formData.append("customerName", customerInfo.customerName);
       formData.append(
         "customerContact",
-        customerInfo.customerContact!.toString()
+        customerInfo.customerContact!.toString(),
       );
       formData.append("customerAddress", customerInfo.customerAddress);
       formData.append("image", file);
       formData.append(
         "purchasedItems",
         JSON.stringify(
-          items.map((item) => ({ productId: item._id, qty: item.qty }))
-        )
+          items.map((item) => ({ productId: item._id, qty: item.qty })),
+        ),
       );
       formData.append("totalPayment", totalPrice.toString());
 
@@ -65,7 +64,6 @@ const PaymentSteps = () => {
 
   return (
     <CardWithHeader title="Payment Steps">
-      <ToastContainer />
       <div className="p-5">
         <ol className="list-decimal text-xs pl-2 flex flex-col gap-4 text-justify mb-3">
           <li>

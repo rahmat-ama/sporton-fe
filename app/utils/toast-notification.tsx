@@ -1,7 +1,7 @@
 import { Bounce, toast, ToastPosition } from "react-toastify";
 
 const defaultOption = {
-  position: "top-center" as ToastPosition,
+  position: "bottom-right" as ToastPosition,
   autoClose: 1500,
   hideProgressBar: false,
   closeOnClick: true,
