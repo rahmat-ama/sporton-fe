@@ -1,3 +1,17 @@
+export interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  token: string;
+  user: {
+    id: string;
+    name: string;
+    email: string;
+  };
+}
+
 export interface Category {
   _id: string;
   name: string;
@@ -36,7 +50,7 @@ export interface Transaction {
     {
       productId: string;
       qty: number;
-    }
+    },
   ];
   totalPayment: string;
   customerName: string;

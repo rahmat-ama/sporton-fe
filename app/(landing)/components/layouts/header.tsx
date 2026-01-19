@@ -59,7 +59,7 @@ const Header = () => {
               <></>
             )}
           </button>
-          {isCartPopupOpen && <CartPopup />}
+          {isCartPopupOpen && <CartPopup onClose={handleOnClose} />}
         </div>
       </div>
       {isCartPopupOpen && (
