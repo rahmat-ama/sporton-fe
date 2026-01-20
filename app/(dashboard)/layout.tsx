@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "../globals.css";
 import Sidebar from "./components/layouts/sidebar";
 import AuthGuard from "./components/layouts/auth-guard";
+import { ToastContainer } from "react-toastify";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -27,6 +28,7 @@ export default function RootLayout({
             <main className="flex-1 ml-80 p-14 bg-[#F7F9FA] min-h-screen">
               <div className="max-w-6xl mx-auto">{children}</div>
             </main>
+            <ToastContainer />
           </div>
         </AuthGuard>
       </body>
