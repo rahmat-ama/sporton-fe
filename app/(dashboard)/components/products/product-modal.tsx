@@ -123,7 +123,7 @@ const ProductModal = ({
         categoryId: product.category._id,
         stock: product.stock,
       });
-      setImagePreview(getImageUrl(product.imageUrl));
+      setImagePreview(product.imageUrl ? getImageUrl(product.imageUrl) : null);
     } else if (isOpen) {
       setFormData({
         name: "",
