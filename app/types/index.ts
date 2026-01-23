@@ -37,7 +37,7 @@ export interface Bank {
   _id: string;
   bankName: string;
   accountName: string;
-  accountNumber: number;
+  accountNumber: string;
   createdAt: string;
   updatedAt: string;
 }
