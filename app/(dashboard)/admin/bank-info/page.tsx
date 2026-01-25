@@ -23,6 +23,7 @@ const BankInfoManagement = () => {
       const data = await getAllBanks();
       setBanks(data);
     } catch (error) {
+      console.log("Failed to fetch bank data" + error);
       toastError("Failed to fetch bank data" + error);
     }
   };
@@ -52,6 +53,7 @@ const BankInfoManagement = () => {
       setIsDeleteModalOpen(false);
       fetchBank();
     } catch (error) {
+      console.log(`Failed to delete bank info ${error}`);
       toastError(`Failed to delete bank info ${error}`);
     }
   };

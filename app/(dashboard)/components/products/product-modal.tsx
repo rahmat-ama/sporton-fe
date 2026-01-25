@@ -52,6 +52,7 @@ const ProductModal = ({
       const data = await getAllCategories();
       setCategories(data);
     } catch (error) {
+      console.log(`Failed to fetch categories ${error}`);
       toastError(`Failed to fetch categories ${error}`);
     }
   };
@@ -104,6 +105,11 @@ const ProductModal = ({
           : "Product created successfully",
       );
     } catch (error) {
+      console.log(
+        isEditMode
+          ? `Failed to update product ${error}`
+          : `Failed to create product ${error}`,
+      );
       toastError(
         isEditMode
           ? `Failed to update product ${error}`

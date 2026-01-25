@@ -28,6 +28,7 @@ const ProdutManagement = () => {
         setProducts(data);
       }
     } catch (error) {
+      console.log(`Failed to fetch products ${error}`);
       toastError(`Failed to fetch products ${error}`);
     }
   };
@@ -51,6 +52,7 @@ const ProdutManagement = () => {
         setIsDeleteModalOpen(false);
         setProductToDeleteId(null);
       } catch (error) {
+        console.log(`Failed to delete product ${error}`);
         toastError(`Failed to delete product ${error}`);
       }
     }

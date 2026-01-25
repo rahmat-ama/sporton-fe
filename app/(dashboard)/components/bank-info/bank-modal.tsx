@@ -52,6 +52,11 @@ const BankModal = ({ bank, isOpen, onClose, onSuccess }: TBankModalProps) => {
           : "Bank info created successfully",
       );
     } catch (error) {
+      console.log(
+        isEditMode
+          ? `Failed to update Bank info ${error}`
+          : `Failed to create Bank info ${error}`,
+      );
       toastError(
         isEditMode
           ? `Failed to update Bank info ${error}`

@@ -28,6 +28,7 @@ const CategoriesManagement = () => {
       const data = await getAllCategories();
       setCategories(data);
     } catch (error) {
+      console.log(`Failed to fetch categories ${error}`);
       toastError(`Failed to fetch categories ${error}`);
     }
   };
@@ -51,6 +52,7 @@ const CategoriesManagement = () => {
         setIsDeleteModalOpen(false);
         setCategoryToDeleteId(null);
       } catch (error) {
+        console.log(`Failed to delete product ${error}`);
         toastError(`Failed to delete product ${error}`);
       }
     }

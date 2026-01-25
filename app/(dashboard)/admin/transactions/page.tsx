@@ -21,6 +21,7 @@ const ProdutManagement = () => {
       const data = await getAllTransaction();
       setTransactions(data);
     } catch (error) {
+      console.log(`Failed to fetch transactions ${error}`);
       toastError(`Failed to fetch transactions ${error}`);
     }
   };
@@ -48,6 +49,7 @@ const ProdutManagement = () => {
 
       await fetchTransaction();
     } catch (error) {
+      console.log(`Failed to update transaction status ${error}`);
       toastError(`Failed to update transaction status ${error}`);
     } finally {
       setIsModalOpen(false);

@@ -98,6 +98,11 @@ const CategoryModal = ({
           : "Category created successfully",
       );
     } catch (error) {
+      console.log(
+        (isEditMode
+          ? "Failed to update category"
+          : "Failed to create category") + error,
+      );
       toastError(
         (isEditMode
           ? "Failed to update category"

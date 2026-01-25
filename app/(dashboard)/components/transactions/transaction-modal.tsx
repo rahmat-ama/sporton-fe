@@ -100,29 +100,38 @@ const TransactionModal = ({
           <h4 className="font-semibold text-sm mb-2">Items Purchase</h4>
 
           <div className="space-y-3">
-            {transaction.purchasedItems.map((item) => (
-              <div
-                className="border border-gray-200 rounded-lg p-2 flex gap-2 items-center"
-                key={item.productId._id}
-              >
-                <div className="bg-gray-200 rounded aspect-square w-8 h-8 flex items-center justify-center">
-                  <Image
-                    src={
-                      item.productId != null
-                        ? getImageUrl(item.productId.imageUrl)
-                        : null
-                    }
-                    alt={item.productId.name}
-                    width={30}
-                    height={30}
-                  />
+            {transaction.purchasedItems.map((item, index) =>
+              item.productId ? (
+                <div
+                  className="border border-gray-200 rounded-lg p-2 flex gap-2 items-center"
+                  key={item.productId._id}
+                >
+                  <div className="bg-gray-200 rounded aspect-square w-8 h-8 flex items-center justify-center">
+                    <Image
+                      src={getImageUrl(item.productId.imageUrl)}
+                      alt={item.productId.name}
+                      width={30}
+                      height={30}
+                    />
+                  </div>
+                  <div className="font-medium text-sm">
+                    {item.productId.name}
+                  </div>
+                  <div className="font-medium ml-auto text-sm">
+                    {item.qty} units
+                  </div>
                 </div>
-                <div className="font-medium text-sm">{item.productId.name}</div>
-                <div className="font-medium ml-auto text-sm">
-                  {item.qty} units
+              ) : (
+                <div
+                  className="border border-gray-200 rounded-lg p-2 flex gap-2 items-center"
+                  key={index}
+                >
+                  <div className="w-fit h-8 flex items-center">
+                    <p className="font-medium text-sm">Produk sudah dihapus</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ),
+            )}
           </div>
           <div className="flex justify-between font-semibold text-sm mt-6">
             <h4>Total</h4>
