@@ -8,7 +8,11 @@ import { toastError } from "../../../utils/toast-notification";
 import { getImageUrl } from "../../../lib/api";
 import priceFormatter from "../../../utils/price-formatter";
 
-const CartPopup = () => {
+type TCartPopupProps = {
+  onClose: () => void;
+};
+
+const CartPopup = ({ onClose }: TCartPopupProps) => {
   const router = useRouter();
   const { items, removeItem } = useCartStore();
 
@@ -20,6 +24,7 @@ const CartPopup = () => {
   };
 
   const handleCheckout = () => {
+    onClose();
     router.push("/checkout");
   };
 

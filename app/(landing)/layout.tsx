@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "../globals.css";
 import Header from "./components/layouts/header";
 import Footer from "./components/layouts/footer";
+import { ToastContainer } from "react-toastify";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -12,16 +13,20 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "SportOn Website",
-  description: "Engineered for endurance and designed for speed. Experience gear that moves as fast as you do. Premium fabrics. Unmatched comfort. Limitless motion.",
+  description:
+    "Engineered for endurance and designed for speed. Experience gear that moves as fast as you do. Premium fabrics. Unmatched comfort. Limitless motion.",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${poppins.variable} antialiased`}>
         <Header />
         {children}
         <Footer />
+        <ToastContainer />
       </body>
     </html>
   );

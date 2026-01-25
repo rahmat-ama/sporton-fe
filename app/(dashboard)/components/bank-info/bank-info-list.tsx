@@ -1,33 +1,20 @@
 import { FiCreditCard, FiEdit2, FiTrash2 } from "react-icons/fi";
+import { Bank } from "../../../types";
 
-const bankData = [
-  {
-    bankName: "BCA",
-    accountNumber: "68246242543525345",
-    accountName: "PT SportsOn Digital Indonesia",
-  },
-  {
-    bankName: "BRI",
-    accountNumber: "68647562873456347",
-    accountName: "PT SportsOn Digital Indonesia",
-  },
-  {
-    bankName: "Mandiri",
-    accountNumber: "68901849283576983",
-    accountName: "PT SportsOn Digital Indonesia",
-  },
-  {
-    bankName: "BTPN",
-    accountNumber: "68243513498239744",
-    accountName: "PT SportsOn Digital Indonesia",
-  },
-];
+type TBankInfoListProps = {
+  banks: Bank[];
+  onEdit: (bank: Bank) => void;
+  onDelete: (id: string) => void;
+};
 
-const BankInfoList = () => {
+const BankInfoList = ({ banks, onEdit, onDelete }: TBankInfoListProps) => {
   return (
     <div className="grid grid-cols-3 gap-8">
-      {bankData.map((bank, index) => (
-        <div className="bg-white rounded-lg border border-gray-200" key={index}>
+      {banks.map((bank) => (
+        <div
+          className="bg-white rounded-lg border border-gray-200"
+          key={bank._id}
+        >
           <div className="flex justify-between p-5">
             <div className="flex gap-2 items-center">
               <div className="bg-blue-100 text-blue-600 rounded-lg w-12 h-12 flex justify-center items-center">
@@ -39,10 +26,13 @@ const BankInfoList = () => {
               </div>
             </div>
             <div className="gap-4 flex -mt-5 text-gray-600">
-              <button className="cursor-pointer">
+              <button className="cursor-pointer" onClick={() => onEdit(bank)}>
                 <FiEdit2 size={20} />
               </button>
-              <button className="cursor-pointer">
+              <button
+                className="cursor-pointer"
+                onClick={() => onDelete(bank._id)}
+              >
                 <FiTrash2 size={20} />
               </button>
             </div>

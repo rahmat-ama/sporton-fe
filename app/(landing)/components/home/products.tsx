@@ -7,7 +7,6 @@ import { FiPlus } from "react-icons/fi";
 import priceFormatter from "../../../utils/price-formatter";
 import { Product } from "../../../types";
 import React from "react";
-import { ToastContainer } from "react-toastify";
 import { useCartStore } from "../../../hooks/use-cart-store";
 import { toastError, toastSuccess } from "../../../utils/toast-notification";
 import { getImageUrl } from "../../../lib/api";
@@ -32,7 +31,6 @@ const ProductsSection = ({ products }: TProductsProps) => {
 
   return (
     <section id="products-section" className="container mx-auto mt-32 mb-52">
-      <ToastContainer />
       <h2 className="font-bold italic text-4xl text-center mb-11">
         <span className="text-primary">OUR</span> PRODUCTS
       </h2>

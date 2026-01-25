@@ -10,9 +10,17 @@ import {
   FiLogOut,
   FiShoppingCart,
 } from "react-icons/fi";
+import { logout } from "../../../services/auth.service";
+import { useRouter } from "next/navigation";
 
 const Sidebar = () => {
   const pathName = usePathname();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout();
+    router.push("/admin/login");
+  };
 
   const menuItems = [
     {
@@ -64,12 +72,12 @@ const Sidebar = () => {
           );
         })}
       </div>
-      <Link
-        href={"#"}
-        className="flex gap-3 font-medium py-3 px-4.5 mx-5.5 hover:bg-gray-100 duration-300 rounded-lg mt-auto mb-6"
+      <button
+        className="flex gap-3 cursor-pointer font-medium py-3 px-4.5 mx-5.5 hover:bg-gray-100 duration-300 rounded-lg mt-auto mb-6"
+        onClick={handleLogout}
       >
         <FiLogOut size={24} /> Log Out
-      </Link>
+      </button>
     </aside>
   );
 };
