@@ -41,9 +41,7 @@ const ProdutManagement = () => {
     status: "paid" | "rejected",
   ) => {
     try {
-      const formData = new FormData();
-      formData.append("status", status);
-      await updateTransaction(id, formData);
+      await updateTransaction(id, { status });
 
       toastSuccess("Transaction status updated");
 
