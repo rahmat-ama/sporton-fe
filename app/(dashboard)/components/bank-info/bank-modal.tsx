@@ -39,7 +39,7 @@ const BankModal = ({ bank, isOpen, onClose, onSuccess }: TBankModalProps) => {
 
       setFormData({
         accountName: "",
-        accountNumber: null,
+        accountNumber: "",
         bankName: "",
       });
 
