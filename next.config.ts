@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "be-sporton.agunacourse.com",
         pathname: "/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "sporton-be-production-f1c1.up.railway.app",
+        pathname: "/uploads/**",
+      },
     ],
   },
 };
