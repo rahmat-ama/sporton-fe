@@ -73,7 +73,7 @@ const ProductModal = ({
       data.append("price", formData.price.toString());
       data.append("stock", formData.stock.toString());
       data.append("description", formData.description);
-      data.append("categoryId", formData.categoryId);
+      data.append("category", formData.categoryId);
 
       if (imageFile) {
         data.append("image", imageFile);
